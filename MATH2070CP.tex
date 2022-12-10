@@ -1,0 +1,778 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={MATH2070 Assignment},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage[utf8]{inputenc}
+\def\tightlist{}
+
+\title{MATH2070 Assignment}
+\author{true}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+MATH2070 Assignment
+\end{abstract}
+
+\hypertarget{covariance-and-correlation}{%
+\section{Covariance and Correlation}\label{covariance-and-correlation}}
+
+\hypertarget{justify-the-use-of-the-log-return-rate.-what-are-the-advantages-of-using-it}{%
+\subsection{Justify the use of the log return rate. What are the
+advantages of using
+it?}\label{justify-the-use-of-the-log-return-rate.-what-are-the-advantages-of-using-it}}
+
+Based on the explanation and examples from
+\href{https://investmentcache.com/magic-of-log-returns-concept-part-1/}{investmentcache}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Log returns can be added across time periods. In the case where our
+  target price/index increases and then decreases by same amount, simple
+  returns would present a \textbf{positive} total return while log
+  returns would present a 0 return which is much more in accord with our
+  cognizance.
+\item
+  Log returns follows normal distribution. In some certain areas, the
+  stock price is assumed to follow a log normal distribution. Also,
+  considering the fact that log requires that its corresponding value
+  should never be less than 0, which is exactly one property of assets
+  price, log return is even more preferable.
+\end{enumerate}
+
+\hypertarget{rebasing}{%
+\subsection{Rebasing}\label{rebasing}}
+
+As was shown in Figure\ref{one_ii}, the original indices have been
+adjusted based on the value on Mar 1, 2007.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics{one_ii}
+\caption{Rebased index values of each country from 2007 to 2020}\label{one_ii}
+\end{figure}
+
+\hypertarget{correlation-matrices}{%
+\subsection{Correlation matrices}\label{correlation-matrices}}
+
+\begin{figure}
+\centering
+\subfloat[GFC(03/01/2007 - 31/05/2010)]{%
+\resizebox*{7cm}{!}{\includegraphics{GFC_cor}}}\hspace{5pt}
+\subfloat[GFC-peak(02/09/2008 – 01/06/2009)]{%
+\resizebox*{7cm}{!}{\includegraphics{GFC_peak}}}
+\subfloat[INTERIM(01/06/2010 – 10/03/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{INTERIM}}}\hspace{5pt}
+\subfloat[COVID-19(11/03/2020 – 31/08/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{COVID_19}}}
+\subfloat[COVID-19-peak(11/03/2020 – 29/05/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{COVID_19_peak}}}
+\caption{Correlation matriices of each country for 5 periods} \label{corr_iii}
+\end{figure}
+
+Figure\ref{corr_iii} presents a \textbf{heatmap} based on the
+correlation between each market over the five periods.
+
+The \textbf{heatmap} basically indicates that, during the peak of
+COVID---19, the 20 markets are relatively correlated with each other
+with \emph{orange} and even \emph{red} dominating the plot. Conversely,
+in the \textbf{INTERIM} period, most blue squares show that the
+interaction among these markets is quite low.
+
+The Global Financial Crisis (GFC) and even its peak time did not bring
+much expected interaction to these markets. However, similar to what we
+have described above, COVID-19 and its peak did tie them together,
+probably more closely than ever before.
+
+\hypertarget{histograms-of-the-correlation-coefficients}{%
+\subsection{Histograms of the correlation
+coefficients}\label{histograms-of-the-correlation-coefficients}}
+
+Figure\ref{histo_iv} presents the histogram of \(\rho_{ij}\) of each
+market. Note: we did include same \(\rho_{ij}\) twice. For example,
+\(\rho_{12}\) and \(\rho_{21}\) are both plotted into each histogram.
+But this does not affect the overall trend and relative quantity.
+
+Similar to what we have found in Figure\ref{corr_iii}, here the right
+skewed \(\rho_{ij}\) histograms is less significant during COVID-19 and
+its peak period, which is not a pleasant plot at all because that means
+the markets are more and more correlated with each other.
+
+Also, we could not see significant difference as for the histogram of
+GFC and its following peak.
+
+\begin{figure}
+\centering
+\subfloat[GFC(03/01/2007 - 31/05/2010)]{%
+\resizebox*{7cm}{!}{\includegraphics{histo1}}}\hspace{5pt}
+\subfloat[GFC-peak(02/09/2008 – 01/06/2009)]{%
+\resizebox*{7cm}{!}{\includegraphics{histo2}}}
+\subfloat[INTERIM(01/06/2010 – 10/03/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{histo3}}}\hspace{5pt}
+\subfloat[COVID-19(11/03/2020 – 31/08/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{histo4}}}
+\subfloat[COVID-19-peak(11/03/2020 – 29/05/2020)]{%
+\resizebox*{7cm}{!}{\includegraphics{histo5}}}
+\caption{Correlation Coefficients $\rho_{ij}$ for $1 <i, j < 20$} \label{histo_iv}
+\end{figure}
+
+\hypertarget{portfolio-theory-2}{%
+\section{Portfolio Theory 2}\label{portfolio-theory-2}}
+
+\hypertarget{dollar-amount-invested-in-each-countrys-index-and-optimal-portfolio-p}{%
+\subsection{Dollar amount invested in each country's index and optimal
+portfolio
+P*}\label{dollar-amount-invested-in-each-countrys-index-and-optimal-portfolio-p}}
+
+
+\begin{table}[!htb]
+\centering
+{\begin{tabular}{lcccccc} 
+  \hline
+ & Country & Investment \\ 
+  \hline
+1 & Italy & -228000.00 \\ 
+  2 & US & 1890000.00 \\ 
+  3 & Australia & 126000.00 \\ 
+  4 & UK & -972000.00 \\ 
+  5 & Brazil & 26700.00 \\ 
+  6 & Japan & 311000.00 \\ 
+  7 & Russia & -260000.00 \\ 
+  8 & China & 28800.00 \\ 
+  9 & France & -569000.00 \\ 
+  10 & Canada & -889000.00 \\ 
+  11 & Korea & -492000.00 \\ 
+  12 & Switzerland & 48500.00 \\ 
+  13 & Spain & -815000.00 \\ 
+  14 & India & 634000.00 \\ 
+  15 & Mexico & -389000.00 \\ 
+  16 & Germany & 958000.00 \\ 
+  17 & Indonesia & 435000.00 \\ 
+  18 & Netherlands & 1060000.00 \\ 
+  19 & Saudi & -117000.00 \\ 
+  20 & Turkey & 209000.00 \\ 
+   \hline
+\end{tabular}}
+\caption{Investment in each market with 1,000,000 dollors.}
+\label{money_invested}
+\end{table}
+
+
+Based on formulas from the textbook, we firstly calculated \textbf{a},
+\textbf{b}, \textbf{c}, \textbf{d} and then with \emph{\(t=0.2\)}, the
+optimal portfolio \(P^\star\) including the weight of each asset, its
+\(\mu^{\star}\) and \(\sigma^{\star}\) are available.
+
+Thus, we should invest as below with negative values meaning we should
+short sell the corresponding market indices and positive values meaning
+we should take a long position in terms of the corresponding market
+indices. We get \(\mu^{\star} = 0.00138432\) and
+\(\sigma^{\star} = 0.0166244\)
+
+Partial codes are as below:
+
+\begin{verbatim}
+a = np.dot(ones_array_trans, returns_3_full_variance_annualized_inverse)
+a = np.dot(a, ones_array)
+
+b = np.dot(ones_array_trans, returns_3_full_variance_annualized_inverse)
+b = np.dot(b, returns_3_full_mean_annualized)
+
+c = np.dot(returns_3_full_mean_annualized_trans, 
+returns_3_full_variance_annualized_inverse)
+c = np.dot(c, returns_3_full_mean_annualized)
+
+d=np.dot(a, c)
+d = np.subtract(d, b**2)
+
+alpha = (1/a) * returns_3_full_variance_annualized_inverse
+alpha = np.dot(alpha, ones_array)
+
+beta_real = np.dot(returns_3_full_variance_annualized_inverse,
+np.subtract(returns_3_full_mean_annualized, (b/a)*ones_array))
+
+x_weight  = np.add(alpha, 0.2*beta_real)
+money_invested = 1000000 * x_weight
+miu_star = (b+d*0.2)/a
+varian = (1+d*0.2**2)/a
+sigma_star = np.sqrt(varian)
+\end{verbatim}
+
+\hypertarget{plot}{%
+\subsection{Plot}\label{plot}}
+
+\begin{figure}[!htb]
+\includegraphics{miusigma}
+\caption{$\mu\sigma$-plane}\label{miusigma}
+\end{figure}
+
+Figure\ref{miusigma} plots things as below:
+
+\begin{itemize}
+\item
+  All 20 country indices;
+\item
+  \textbf{MVF} (Minimum Variance Frontier) and \textbf{EF} (Efficient
+  Frontier);
+\item
+  1000 random feasible portfolios;
+\item
+  Indifference curve of an investor with t = 0.2 and their optimal
+  portfolio.
+\end{itemize}
+
+We should notice that some of the randomly generated portfolios are away
+from EF even MVF. This \emph{inefficient} random portfolios derive from
+the fact that our \textbf{``Randomly''} generated portfolios are not
+\textbf{random} at all, at least not random enough. That may be caused
+by the simplicity of the codes used to generate these portfolios:
+
+\begin{verbatim}
+while port_count < 1000:
+    weights = np.random.random(num_assets)
+    weights = weights/np.sum(weights)
+    weights = weights.reshape((20, 1))
+    # print(weights)
+    varian_port_loop = np.dot(weights.transpose(), returns_3_full_variance_annualized)
+    varian_port_loop = np.dot(varian_port_loop, weights)
+    sigma_i = np.sqrt(varian_port_loop)
+    if np.all([np.abs(weights) < 20*one_array_loop]) and (sigma_i < 0.1): 
+        p_weights.append(weights) 
+        p_vol.append(sigma_i)
+        port_count = port_count + 1
+\end{verbatim}
+
+where, although we did have a constraint \(\mid{x_{nj}}\mid\leq20\) for
+each of the i = 1, 2, \ldots, 20 country indices, the random weights
+generated through above codes are rarely over 1 (test by uncomment codes
+\texttt{print(weights)} above and comment the codes below). This means
+that the short-selling is not even considered by the algorithm which is
+partly not what happens in the real market and particularly not what
+happens to the portfolios on EF. Therefore, some of these
+\emph{randomly} portfolios are far away from the efficient frontier.
+
+\hypertarget{portfolio-theory-3}{%
+\section{Portfolio Theory 3}\label{portfolio-theory-3}}
+
+\hypertarget{interim}{%
+\subsection{INTERIM}\label{interim}}
+
+\begin{table}[!htb]
+\centering
+{\begin{tabular}{lcccccc} 
+  \hline
+ & Country & Left & Right \\ 
+  \hline
+1 & Italy & -0.06 & Inf \\ 
+  2 & US & -Inf & 0.00 \\ 
+  3 & Australia & 2.24 & Inf \\ 
+  4 & UK & 0.02 & Inf \\ 
+  5 & Brazil & -Inf & 0.12 \\ 
+  6 & Japan & -Inf & 0.01 \\ 
+  7 & Russia & -0.05 & Inf \\ 
+  8 & China & 0.66 & Inf \\ 
+  9 & France & -0.19 & Inf \\ 
+  10 & Canada & 0.04 & Inf \\ 
+  11 & Korea & 0.03 & Inf \\ 
+  12 & Switzerland & 0.27 & Inf \\ 
+  13 & Spain & 0.02 & Inf \\ 
+  14 & India & -Inf & -0.05 \\ 
+  15 & Mexico & 0.06 & Inf \\ 
+  16 & Germany & -Inf & 0.01 \\ 
+  17 & Indonesia & -Inf & -0.04 \\ 
+  18 & Netherlands & -Inf & -0.01 \\ 
+  19 & Saudi & 0.1 & Inf \\ 
+  20 & Turkey & -Inf & -0.05 \\ 
+   \hline
+\end{tabular}}
+\caption{T range of short-selling for each country}
+\label{trange_ss_table}
+\end{table}
+
+For this question, we need to consider:
+
+\begin{itemize}
+\item
+  Which investors short sell?
+\item
+  Which indices they short sell?
+\item
+  Are there any country indices which no investors short sell or which
+  all investors will short sell?
+\end{itemize}
+
+\begin{figure}[!htb]
+\includegraphics{trange_ss}
+\caption{T-range for short-selling}\label{trange_ss_png}
+\end{figure}
+
+Figure\ref{trange_ss_png} implies that investors with
+\(0.27\leq t < 2.24\) will shortsell most of its assets at hand except
+for the assets in \textbf{Australia}, \textbf{Germany}, \textbf{India},
+\textbf{Indonesia}, \textbf{Japan}, \textbf{Netherlands},
+\textbf{Turkey} and \textbf{US}. As \(>2.24\), investors will also take
+a short position at assets in \textbf{Australia}. Also, investors with
+\(t<-0.19\) would decide to take a short position at the eight assets
+mentioned above while taking a long position at other assets. Based on
+our research and plot, \textbf{if only investors have a sufficiently
+high or low \(t\), they would short sell some certain indices.}
+
+\hypertarget{covid-19-period}{%
+\subsection{COVID-19 period}\label{covid-19-period}}
+
+
+\begin{table}[!htb]
+\centering
+{\begin{tabular}{lcccccc} 
+  \hline
+ & Country & Left & Right \\ 
+  \hline
+1 & Italy & -Inf & 0.00 \\ 
+  2 & US & -Inf & 0.00 \\ 
+  3 & Australia & 0.01 & Inf \\ 
+  4 & UK & 0.00 & Inf \\ 
+  5 & Brazil & -Inf & 0.26 \\ 
+  6 & Japan & -Inf & -0.18 \\ 
+  7 & Russia & -Inf & 0.06 \\ 
+  8 & China & -Inf & -0.07 \\ 
+  9 & France & -0.01 & Inf \\ 
+  10 & Canada & 0.00 & Inf \\ 
+  11 & Korea & -Inf & 0.04 \\ 
+  12 & Switzerland & -Inf & -0.05 \\ 
+  13 & Spain & 0.00 & Inf \\ 
+  14 & India & -Inf & 0.02 \\ 
+  15 & Mexico & 0.04 & Inf \\ 
+  16 & Germany & -Inf & 0.01 \\ 
+  17 & Indonesia & 0.03 & Inf \\ 
+  18 & Netherlands & 0.03 & Inf \\ 
+  19 & Saudi & -Inf & -0.06 \\ 
+  20 & Turkey & 0.09 & Inf \\ 
+   \hline
+\end{tabular}
+\caption{T range of short-selling for each country (Covid-19 period) }
+}
+\label{trange_co_table}
+\end{table}
+
+
+The detailed values are available in Table\ref{trange_co_table} and
+similarly based on this table, we get the following plot.
+
+\begin{figure}[!htb]
+\includegraphics{trange_co}
+\caption{T-range for short-selling (Covid-19 period)}\label{trange_co_png}
+\end{figure}
+
+As was shown in Figure\ref{trange_co_png}, as \(0.09 \leq t \leq 0.26\),
+investors short sell most of its indices except for it in
+\textbf{China}, \textbf{Italy}, \textbf{Japan}, \textbf{Korea},
+\textbf{Russia} , \textbf{Saudi}, \textbf{Switzerland} and \textbf{US}.
+Conversely, investors with \(-0.18< t\leq -0.07\) would decide to take a
+long position at assets mentioned above.
+
+Compared to the first plot (See Figure\ref{trange_ss_png}), there are
+some significant distinctions. For example, investors with
+\(t\geq 2.24\) would shortsell Australian index but during Covid-19, t =
+0.09 would be enough to urge them to take a short position. Similar
+situation happens to \textbf{China} and \textbf{France}.
+
+Also, some investors actually took reversed position during Covid-19.
+For example, previously, investors with \(t>0.66\) would take a short
+position at Chinese market index whereas they would only do the same
+thing with \(t<-0.07\) during Covid-19. Similar things also happen to
+\textbf{Indonesia}, \textbf{Italy}, \textbf{Korea},
+\textbf{Netherlands}, \textbf{Russia}, \textbf{Saudi},
+\textbf{Switzerland} and \textbf{Turkey}. Notably,
+Figure\ref{trange_ss_png} and Figure\ref{trange_co_png} indicate that
+even during Covid-19, investors did not changes its attitude to US
+market index significantly with both t around less than 0.
+
+\hypertarget{adding-a-riskless-cash-fund-and-constructing-the-market-portfolio}{%
+\section{Adding a Riskless Cash Fund and Constructing the Market
+Portfolio}\label{adding-a-riskless-cash-fund-and-constructing-the-market-portfolio}}
+
+\hypertarget{new-allocation-of-their-investment}{%
+\subsection{New allocation of their
+investment}\label{new-allocation-of-their-investment}}
+
+\label{tp_w_weight_tilde} We got the daily return of this Riskless Cash
+Fund using \texttt{r0/250}. Then based on formulas from the textbook, we
+calculate the weight of each risky asset and the cash fund in the
+portfolio by
+
+\begin{verbatim}
+returns_3_full_mean_annualized_tilde = np.subtract(returns_3_full_mean_annualized,
+r0*ones_array)
+x_weight_tilde = 0.2 * np.dot(returns_3_full_variance_annualized_inverse,
+returns_3_full_mean_annualized_tilde)
+x_weight_0 = 1- np.dot(np.transpose(x_weight_tilde), ones_array)
+\end{verbatim}
+
+where we obtain the following Table\ref{x_weight_tilde_plus0}. The
+negative weight means that investors with \(t=0.2\) should short sell
+the corresponding asset while the other way around for positive weight.
+This riskless cash fund would approximately account for 5\% of our
+portfolio.
+
+\begin{table}[!htb]
+\centering
+{\begin{tabular}{lcccccc} 
+  \hline
+ & Country & Weight \\ 
+  \hline
+1 & Italy & -0.22 \\ 
+  2 & US & 1.89 \\ 
+  3 & Australia & 0.12 \\ 
+  4 & UK & -0.98 \\ 
+  5 & Brazil & 0.03 \\ 
+  6 & Japan & 0.31 \\ 
+  7 & Russia & -0.26 \\ 
+  8 & China & 0.03 \\ 
+  9 & France & -0.55 \\ 
+  10 & Canada & -0.90 \\ 
+  11 & Korea & -0.50 \\ 
+  12 & Switzerland & 0.04 \\ 
+  13 & Spain & -0.82 \\ 
+  14 & India & 0.63 \\ 
+  15 & Mexico & -0.40 \\ 
+  16 & Germany & 0.96 \\ 
+  17 & Indonesia & 0.43 \\ 
+  18 & Netherlands & 1.06 \\ 
+  19 & Saudi & -0.12 \\ 
+  20 & Turkey & 0.21 \\ 
+  21 & Cash Fund & 0.05 \\ 
+   \hline
+\end{tabular}
+\caption{Weight of each asset including cash fund}}
+\label{x_weight_tilde_plus0}
+\end{table}
+
+\hypertarget{capital-market-line-and-the-tangency-portfolio}{%
+\subsection{Capital Market Line and the tangency
+portfolio}\label{capital-market-line-and-the-tangency-portfolio}}
+
+\label{CML and TP}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=1\textwidth]{textbook_CML}
+\end{center}
+\caption{CML and MVF}\label{textbook_CML}
+\end{figure}
+
+According to Buchen and Ivers (2020), CML (Capital Market Line is),
+which is denoted by
+\(\hat\sigma = \frac{\hat\mu - r_0}{\sigma_0\sqrt{d}}\), is the
+``degenerate form of the efficient frontier''. It is the line \(P_0M\)
+as is shown in Figure\ref{textbook_CML} from the textbook.
+
+The fact that CML is tangential to EF has been proved in the textbook.
+Based on the summary of Buchen and Ivers, we have the following
+observations:
+
+\begin{itemize}
+\item
+  \(r_{riskless-asset} < \frac{b}{a}\) is the most practical case where
+  CML has a positive slope and M is the \emph{Tangency Portfolio}. An
+  investor would not take any risky assets into consideration except for
+  riskless asset at \(\hat\sigma = 0\) which is understandable because
+  they did not have risky assets in their portfolio while risk less
+  asset offers 0 \(\sigma\). Similarly, riskless assets will be dropped
+  totally in our \emph{Tangency Portfolio M}.
+\item
+  \(r_{riskless-asset} > \frac{b}{a}\) represents a CML with negative
+  slope and the \emph{Tangency Portfolio M} is at the lower part of MVF,
+  a symmetrical point of M at the upper part.
+\item
+  In the remaining case, Buchen and Ivers (2020) found that CML is the
+  asymptote to MVF.
+\end{itemize}
+
+In our case, where \(r_0 = 0.00001\) and \(\frac{b}{a} = 0.00014524\),
+we got a practical case at hand. Our \emph{Tangency Portfolio M} has
+\(\sigma_M = 0.0174574\) and \(\mu_M = 0.00145337\) which would be
+plotted in the next part of this assignment.
+
+\hypertarget{gdp}{%
+\subsection{GDP}\label{gdp}}
+
+We retrieve \textbf{Current Price Gross Domestic Product} of each
+country with seasonally adjusted from
+\href{https://fred.stlouisfed.org/}{Federal Reserve Bank of St.~Louis}.
+We decided to use \textbf{Index(Scale value to the chosen date)} as the
+original data and set \textbf{2009-06-01} as the end of US recession
+date and the value of that day is the base value. All of these is done
+on \href{https://fred.stlouisfed.org/}{Federal Reserve Bank of
+St.~Louis}.
+
+Note that we did not get the quarterly indicator of \textbf{Saudi
+Arabia}. After getting its annual data, we calculate its log returns and
+using the equation below
+
+\begin{equation}
+\ (1+r_{quarterly})^4 = (1 + r_{yearly})
+\end{equation}
+
+to get the quarterly return.
+
+Since we have collected the original data, similar steps had been
+executed in our python code. Partial codes are as below:
+
+\begin{verbatim}
+one_array_20 = np.ones((20, 1), dtype=np.int32)
+one_array_20_tran = np.transpose(one_array_20)
+a_gdp = np.dot(one_array_20_tran, returns_quaterly_full_variance_inv)
+a_gdp = np.dot(a_gdp, one_array_20)
+
+b_gdp = np.dot(one_array_20_tran, returns_quaterly_full_variance_inv)
+b_gdp = np.dot(b_gdp, returns_quaterly_full_mean)
+
+c_gdp = np.dot(returns_quaterly_full_mean_tran, returns_quaterly_full_variance_inv)
+c_gdp = np.dot(c_gdp, returns_quaterly_full_mean)
+
+d_gdp = np.dot(a_gdp, c_gdp)
+d_gdp = np.subtract(d_gdp, b_gdp**2)
+
+alpha_gdp = (1/a_gdp) * returns_quaterly_full_variance_inv
+alpha_gdp = np.dot(alpha_gdp, one_array_20)
+
+beta_gdp = np.dot(returns_quaterly_full_variance_inv, np.subtract(returns_quaterly_full_mean, 
+(b_gdp/a_gdp)*one_array_20))
+
+x_weight_gdp =np.add(alpha_gdp, beta_gdp * 0.2)
+
+miu_gdp = (c_gdp-b_gdp*r0)/(b_gdp-a_gdp*r0)
+\end{verbatim}
+
+We are required to derive a market portfolio from this new dataset.
+Within the following few steps, we use the formulas from textbook to get
+the \emph{Tangency Portfolio} of this quarterly gdp dataset. The reasons
+are as follows:
+
+\begin{itemize}
+\item
+  Buchen and Ivers (2020) suggest it is irresistible to equate the
+  \emph{Tangency Portfolio} with the \emph{Market Portfolio} which, as
+  they stated, is the key assumption of \emph{Capital Asset Pricing
+  Model}. Therefore, firstly we got the theoretical support for this
+  equivalent relationship.
+\item
+  Also, as what we have discussed in \ref{CML and TP}, at Point M,
+  \emph{Tangency Portfolio} actually holds 0 \textbf{riskeless asset} so
+  that we could confidently believe this point can kind of represent our
+  target \textbf{Market Portfolio}.
+\end{itemize}
+
+\hypertarget{capital-market-line}{%
+\section{Capital Market Line}\label{capital-market-line}}
+
+\begin{figure}[!htb]
+\includegraphics[width=1\textwidth]{CML_other}
+\caption{CML+Tangency Portfolio+Market Portfolio+$P_0$+EF}\label{CML_other}
+\end{figure}
+
+The final plot is shown in Figure\ref{CML_other}.
+
+Basically, CML was plotted using Equation\ref{miuhat} and
+Equation\ref{CML_formula} with \(t \in [-0.4,1]\) \begin{equation}
+\hat\mu = r_0 + d\sigma_0^2t
+\label{miuhat}
+\end{equation}
+
+\begin{equation}
+\hat\sigma = \frac{\hat\mu - r_0}{\sigma_0\sqrt{d}}
+\label{CML_formula}
+\end{equation}
+
+where \(\sigma_0\) is the volatility of the portfolio with \(r_0\)
+return on EF for \textbf{risky assets only} and a, b, c and d are
+exactly what we have calculated before in order to get
+Figure\ref{miusigma}.
+
+The \textbf{Market Portfolio} comes from the previous calculation. Note
+that we have change it into daily basis by using codes
+\texttt{sigma\_gdp/(250/4)} and \texttt{miu\_gdp/(250/4)}
+
+If we have 100 million dollars available, considering there exists the
+riskless cash fund, the new weight of each asset is similar to the
+\textbf{x\_weight\_tilde}, which we have calculated here (Refer to
+\ref{tp_w_weight_tilde}).
+
+Therefore, we have the following table:
+
+\begin{table}[!htb]
+\centering
+{\begin{tabular}{lcccccc} 
+  \hline
+ & Country & Investment \\ 
+  \hline
+1 & Italy & -22.5 \\ 
+  2 & US & 189.0 \\ 
+  3 & Australia & 11.9 \\ 
+  4 & UK & -97.9 \\ 
+  5 & Brazil & 2.9 \\ 
+  6 & Japan & 31.3 \\ 
+  7 & Russia & -25.7 \\ 
+  8 & China & 2.7 \\ 
+  9 & France & -55.4 \\ 
+  10 & Canada & -90.2 \\ 
+  11 & Korea & -49.6 \\ 
+  12 & Switzerland & 3.8 \\ 
+  13 & Spain & -81.9 \\ 
+  14 & India & 62.7 \\ 
+  15 & Mexico & -39.7 \\ 
+  16 & Germany & 96.0 \\ 
+  17 & Indonesia & 43.1 \\ 
+  18 & Netherlands & 106.0 \\ 
+  19 & Saudi & -12.3 \\ 
+  20 & Turkey & 20.6 \\ 
+   \hline
+\end{tabular}
+\caption{Investment in each index. \textsuperscript{a}Negative values mean that we short sell the corresponding assets.}}
+\label{investment_100.csv}
+\end{table}
+
+\hypertarget{security-market-line}{%
+\section{Security Market Line}\label{security-market-line}}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{SML_manually}
+\end{center}
+\caption{Security Market Line}\label{SML}
+\end{figure}
+
+As was shown in Figure\ref{SML}, all assets are on Security Market Line.
+And Figure\ref{betagreater} indicates that only \(\beta_{US} > 1\) while
+\(\beta_{Japan}\) and \(\beta_{India}\) are very close to 1. Notably,
+Russia and Spain both presented a negative \(\beta\).
+
+Buchen and Ivers suggested in 2020 that \emph{Portfolio Theory} is
+``about managing risk''. \(\beta\) is one measure of the risk of assets
+relative to the market portfolio (Buchen \& Ivers, 2020).
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{betagreater}
+\end{center}
+\caption{$\beta$ of 20 countries}\label{betagreater}
+\end{figure}
+
+A higher \(\beta_{US}\) means a higher return as was stated by
+Table\ref{beta_countries_name} whereas, concurrently, an investor has to
+undergo the extra volatility.
+
+However, a relatively low \(\beta\) would probably offer a negative
+return (such as \textbf{Italy}, \textbf{Russia} and \textbf{Spain}).
+
+Then, based on the \emph{Portfolio Theory}, risk management does not
+suggest we should pursue 0 risk. On the contrary, an appropriate
+portfolio taking both return and risk into consideration would be
+preferable. For example, \textbf{Saudi} with the lowest \(\beta\) but
+offers almost the same return as UK might benefit our portfolio.
+Undoubtedly, there are many other reasons in the real world affecting
+the return of our portfolio so that an investor with \emph{Portfolio
+Theory} and a global vision might outperform its counterparts.
+
+\begin{table}[!htb]
+\caption{$\beta$, $r_{daily}$ and $r_{yearly}$}
+{\begin{tabular}{lcccccc} 
+    \hline
+ & Country & Beta & Yearly Return & Daily Return \\ 
+  \hline
+1 & Italy & -0.16 & -0.01 & -0.00 \\ 
+  2 & US & 1.31 & 0.10 & 0.00 \\ 
+  3 & Australia & 0.37 & 0.03 & 0.00 \\ 
+  4 & UK & 0.16 & 0.01 & 0.00 \\ 
+  5 & Brazil & 0.49 & 0.04 & 0.00 \\ 
+  6 & Japan & 0.95 & 0.07 & 0.00 \\ 
+  7 & Russia & -0.36 & -0.02 & -0.00 \\ 
+  8 & China & 0.50 & 0.04 & 0.00 \\ 
+  9 & France & 0.35 & 0.03 & 0.00 \\ 
+  10 & Canada & 0.32 & 0.02 & 0.00 \\ 
+  11 & Korea & 0.21 & 0.02 & 0.00 \\ 
+  12 & Switzerland & 0.49 & 0.04 & 0.00 \\ 
+  13 & Spain & -0.35 & -0.02 & -0.00 \\ 
+  14 & India & 0.99 & 0.07 & 0.00 \\ 
+  15 & Mexico & 0.33 & 0.03 & 0.00 \\ 
+  16 & Germany & 0.74 & 0.06 & 0.00 \\ 
+  17 & Indonesia & 0.83 & 0.06 & 0.00 \\ 
+  18 & Netherlands & 0.54 & 0.04 & 0.00 \\ 
+  19 & Saudi & 0.10 & 0.01 & 0.00 \\ 
+  20 & Turkey & 0.82 & 0.06 & 0.00 \\ 
+   \hline
+\end{tabular}}\label{beta_countries_name}
+\end{table}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+Buchen, P. W., \& Ivers, D. J. (2020). \emph{MATH2070 and MATH2970
+Optimization and Financial Mathematics Lecture Notes.} \hangindent=2em
+Sydney: The University of Sydney School of Mathematics and Statistics.
+
+E.G. (2018, October 4). \emph{Magic of Log Returns: Concept -- Part 1.}
+\hangindent=2em Retrieved from Investment Cache:
+\url{https://investmentcache.com/magic-of-log-returns-concept-part-1/}
+
+\end{document}
